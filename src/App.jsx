@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import Alert from './Alert';
 import './App.css';
+import AutoResetCounter from './AutoResetCounter';
+import RandomUsers from './RandomUsers';
+import TypingIndicator from './TypingIndicator';
+import FocusInput from './FocusInput';
 
 function App() {
   const [showAlert, setShowAlert] = useState(null);
 
   return (
     <>
-      <div className='container'>
+      {/* <div className='container'>
         <button onClick={() => { setShowAlert("success") }}>Success Alert</button>
         {showAlert === "success" && (
           <Alert type="success"
@@ -31,7 +35,11 @@ function App() {
             message="لطفاً اطلاعات واردشده را بررسی کنید"
             onClose={() => { setShowAlert(null) }} />
         )}
-      </div>
+      </div> */}
+      {/* <AutoResetCounter />
+      <RandomUsers /> */}
+      {/* <TypingIndicator /> */}
+      <FocusInput />
     </>
   )
 
