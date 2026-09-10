@@ -5,6 +5,7 @@ import AutoResetCounter from './AutoResetCounter';
 import RandomUsers from './RandomUsers';
 import TypingIndicator from './TypingIndicator';
 import FocusInput from './FocusInput';
+import GitHubFinder from './GitHubFinder';
 
 function App() {
   const [showAlert, setShowAlert] = useState(null);
@@ -40,9 +41,58 @@ function App() {
       <RandomUsers /> */}
       {/* <TypingIndicator /> */}
       <FocusInput />
+      <GitHubFinder />
     </>
   )
 
 }
 
 export default App
+
+//////////////////////////////
+// import { useState } from 'react'
+// import ThemeContext from './ThemeContext'
+// import Toolbar from './Toolbar'
+
+// function App() {
+//   const [theme, setTheme] = useState('light')
+
+//   const toggleTheme = () => {
+//     setTheme(prev => (prev === 'light' ? 'dark' : 'light'))
+//   }
+
+//   return (
+//     <ThemeContext.Provider value={{ theme, toggleTheme }}>
+//       <div>
+//         <h1>Current theme: {theme}</h1>
+//         <Toolbar />
+//       </div>
+//     </ThemeContext.Provider>
+//   )
+// }
+// export default App
+
+//////////////////////////////////
+
+// import { useState } from 'react'
+// import LanguageContext from './LanguageContext'
+// import Navbar from './Navbar'
+// import Greeting from './Greeting'
+// import Farewell from './Farewell'
+
+// function App() {
+//   const [language, setLanguage] = useState('en')
+
+//   const toggleLanguage = () => {
+//     setLanguage(prev => (prev === 'en' ? 'es' : 'en'))
+//   }
+
+//   return (
+//     <LanguageContext.Provider value={{ language, toggleLanguage }}>
+//       <Navbar />
+//       <Greeting />
+//       <Farewell />
+//     </LanguageContext.Provider>
+//   )
+// }
+// export default App
