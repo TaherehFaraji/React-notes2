@@ -7,6 +7,7 @@ import TypingIndicator from './TypingIndicator';
 import FocusInput from './FocusInput';
 import GitHubFinder from './GitHubFinder';
 import Posts from './Posts';
+import Component from './Component';
 
 function App() {
   const [showAlert, setShowAlert] = useState(null);
@@ -44,6 +45,7 @@ function App() {
       <FocusInput />
       <GitHubFinder /> */}
       <Posts />
+      <Component />
     </>
   )
 
