@@ -15,7 +15,7 @@ function Component() {
                 setPhotos(data)
             })
             .catch((err) => {
-                //handelling abrot error
+                //handlling abrot error
                 if (err.name === "AbortError") {
                     return;
                 }

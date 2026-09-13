@@ -40,14 +40,14 @@ function App() {
             onClose={() => { setShowAlert(null) }} />
         )}
       </div> */}
-      {/* <AutoResetCounter />
+       {/* <AutoResetCounter />
       <RandomUsers /> 
        <TypingIndicator />
-      <FocusInput />
-      <GitHubFinder /> */}
+      <FocusInput /> */}
+      <GitHubFinder />
       {/* <Posts />
       <Component /> */}
-      <Video />
+      {/* <Video /> */}
     </>
   )
 

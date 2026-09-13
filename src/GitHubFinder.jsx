@@ -6,52 +6,85 @@ function GitHubFinder() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [typing, setTyping] = useState(false)
   const inputRef = useRef(null)
 
+
   useEffect(() => {
+    // Focus the input if the element exists..It helps handle errors
     inputRef.current?.focus()
   }, [])
 
-  const handleSearch = (e) => {
-    e.preventDefault()
+  useEffect(() => {
     const trimmed = username.trim()
-    if (!trimmed) return
 
-    setLoading(true)
-    setError(null)
-    setUser(null)
+    if (!trimmed) {
+      setTyping(false)
+      setUser(null)
+      setError(null)
+      return
+    }
 
-    fetch(`https://api.github.com/users/${trimmed}`)
-      .then(res => {
-        if (res.status === 404) throw new Error('User not found')
-        if (!res.ok) throw new Error('Something went wrong')
-        return res.json()
-      })
-      .then(data => {
-        setUser(data)
-        setLoading(false)
-      })
-      .catch(err => {
-        setError(err.message)
-        setLoading(false)
-      })
-  }
+    setTyping(true)
+    setLoading(false)
+
+    const timer = setTimeout(() => {
+      setTyping(false)
+      setLoading(true)
+      setError(null)
+      setUser(null)
+
+      fetch(`https://api.github.com/users/${trimmed}`)
+        .then(res => {
+          if (res.status === 404) {
+            throw new Error('User not found')
+          }
+
+          if (!res.ok) {
+            throw new Error('Something went wrong')
+          }
+
+          return res.json()
+        })
+        .then(data => {
+          setUser(data)
+          setLoading(false)
+        })
+        .catch(err => {
+          setError(err.message)
+          setLoading(false)
+        })
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [username])
 
   return (
     <div style={{ maxWidth: '400px', margin: '20px auto' }}>
-      <h3>GitHub User Finder</h3>
-      <form onSubmit={handleSearch}>
-        <input
-          ref={inputRef}
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Enter GitHub username"
-        />
-        <button type="submit">Search</button>
-      </form>
+
+      <input
+        ref={inputRef}
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Enter GitHub username"
+        style={{
+        width: '100%',
+        padding: '12px 16px',
+        fontSize: '16px',
+        border: '1px solid #d0d7de',
+        borderRadius: '12px',
+        outline: 'none',
+        boxSizing: 'border-box',
+        backgroundColor: '#f6f8fa',
+        color: '#24292f',
+        transition: 'all 0.2s ease'}}
+      />
+
+      {typing && <p>Typing...</p>}
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
+
       {user && (
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
           <img src={user.avatar_url} alt="avatar" width="100" style={{ borderRadius: '50%' }} />
