@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function Posts() {
-    const [users, setUsers] = useState([])
+    const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
@@ -12,7 +12,7 @@ function Posts() {
                 return res.json()
             })
             .then(data => {
-                setUsers(data)
+                setPosts(data)
                 setLoading(false)
             })
             .catch(err => {
@@ -58,7 +58,7 @@ function Posts() {
                             display: "grid",
                             gap: "20px",
                         }}>
-                        {users.map((post) => (
+                        {posts.map((post) => (
                             <div
                                 key={post.id}
                                 style={{
