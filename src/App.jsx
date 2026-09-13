@@ -6,6 +6,7 @@ import RandomUsers from './RandomUsers';
 import TypingIndicator from './TypingIndicator';
 import FocusInput from './FocusInput';
 import GitHubFinder from './GitHubFinder';
+import Posts from './Posts';
 
 function App() {
   const [showAlert, setShowAlert] = useState(null);
@@ -38,10 +39,11 @@ function App() {
         )}
       </div> */}
       {/* <AutoResetCounter />
-      <RandomUsers /> */}
-      {/* <TypingIndicator /> */}
+      <RandomUsers /> 
+       <TypingIndicator />
       <FocusInput />
-      <GitHubFinder />
+      <GitHubFinder /> */}
+      <Posts />
     </>
   )
 
